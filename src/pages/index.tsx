@@ -53,10 +53,22 @@ const Home: NextPage = () => {
           />
         </div>
         <p className="mt-10 text-center">
-          {' '}
           {locale === 'zh'
             ? `有时候可能会有水合错误，他*的`
             : `have time have water * error, f**k he`}
+        </p>
+        <p>
+          {locale === 'zh' ? (
+            <div>
+              项目git地址：
+              <a target="_blank">https://github.com/zhe-qi/ZheQi-Blog-Nextjs</a>
+            </div>
+          ) : (
+            <div>
+              GitHub:
+              <a target="_blank">https://github.com/zhe-qi/ZheQi-Blog-Nextjs</a>
+            </div>
+          )}
         </p>
       </div>
     </>
