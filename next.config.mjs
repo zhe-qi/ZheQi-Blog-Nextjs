@@ -17,6 +17,9 @@ const config = {
   i18n: {
     locales: ['en', 'zh'],
     defaultLocale: 'en'
-  }
+  },
+  images: {
+    domains: ['i.postimg.cc'],
+  },
 }
 export default config

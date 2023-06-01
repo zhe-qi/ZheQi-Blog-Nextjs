@@ -2,6 +2,7 @@ import { type NextPage } from 'next'
 import { api } from '~/utils/api'
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
   const { locale } = useRouter()
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
 
   const text = hello.data?.greeting
   const data = getAll.data
-  console.log(data)
+
   return (
     <>
       <div className="mx-auto mt-20 flex h-[2000px] max-w-4xl flex-col border-x dark:text-red-200">
@@ -42,6 +43,14 @@ const Home: NextPage = () => {
               </section>
             )
           })}
+        </div>
+        <div className="mx-auto mt-10">
+          <Image
+            src="https://i.postimg.cc/vHyK48wV/nahida.jpg"
+            alt={'我的图片被你吃了吗'}
+            width={150}
+            height={150}
+          />
         </div>
         <p className="mt-10 text-center">
           {' '}

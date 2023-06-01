@@ -9,3 +9,5 @@
 5. 执行pnpm dev
 
 执行npx prisma studio查看数据库
+
+项目直接扔netlify就行了，识别的出来的
