@@ -3,10 +3,10 @@ import { createTRPCRouter, publicProcedure } from '~/server/api/trpc'
 
 export const exampleRouter = createTRPCRouter({
   hello: publicProcedure
-    .input(z.object({ text: z.string() }))
+    .input(z.object({ locale: z.string() }))
     .query(({ input }) => {
       return {
-        greeting: `Hello ${input.text}`
+        greeting: input.locale === 'en' ? 'Hello from tRPC' : '你好，tRPC'
       }
     }),
   getAll: publicProcedure.query(({ ctx }) => {

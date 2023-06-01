@@ -3,14 +3,19 @@ import { api } from '~/utils/api'
 import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: 'from tRPC' })
+  const { locale } = useRouter()
 
-  const { locale, asPath } = useRouter()
+  const hello = api.example.hello.useQuery({ locale: locale! })
+
+  const text = hello.data?.greeting
 
   return (
     <>
-      <div className="mt-20 h-[2000px] dark:text-red-200">
-        {locale === 'zh' ? '你好' : 'Hello'}
+      <div className="mt-20 flex h-[2000px] flex-col dark:text-red-200">
+        <div className="mt-20 text-center text-2xl">
+          {locale === 'zh' ? '你好' : 'Hello'}
+        </div>
+        <div className="mt-2 text-center">服务端数据：{text}</div>
       </div>
     </>
   )
