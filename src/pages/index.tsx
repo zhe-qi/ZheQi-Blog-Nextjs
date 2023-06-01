@@ -3,6 +3,7 @@ import { api } from '~/utils/api'
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   const { locale } = useRouter()
@@ -57,19 +58,29 @@ const Home: NextPage = () => {
             ? `有时候可能会有水合错误，他*的`
             : `have time have water * error, f**k he`}
         </p>
-        <p>
+        <div className="mt-10 text-center">
           {locale === 'zh' ? (
             <div>
               项目git地址：
-              <a target="_blank">https://github.com/zhe-qi/ZheQi-Blog-Nextjs</a>
+              <Link
+                href="https://github.com/zhe-qi/ZheQi-Blog-Nextjs"
+                target="_blank"
+              >
+                https://github.com/zhe-qi/ZheQi-Blog-Nextjs
+              </Link>
             </div>
           ) : (
             <div>
               GitHub:
-              <a target="_blank">https://github.com/zhe-qi/ZheQi-Blog-Nextjs</a>
+              <Link
+                href="https://github.com/zhe-qi/ZheQi-Blog-Nextjs"
+                target="_blank"
+              >
+                https://github.com/zhe-qi/ZheQi-Blog-Nextjs
+              </Link>
             </div>
           )}
-        </p>
+        </div>
       </div>
     </>
   )
