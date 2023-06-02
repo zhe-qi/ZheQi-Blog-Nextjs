@@ -6,32 +6,79 @@ const Header = () => {
   const { locale, asPath } = useRouter()
 
   return (
-    <div className="fixed left-0 top-0 flex h-20 w-screen border-b-[1px] backdrop-blur backdrop-filter">
-      <div className="relative ml-20 h-20 w-32 cursor-pointer">
-        <div className="absolute left-[-480px] top-[-47px] ml-96 h-32 w-44">
-          <Switch />
+    <div className="navbar fixed top-0 backdrop-blur dark:text-zinc-50">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn-ghost btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu rounded-box menu-sm mt-3 w-52 border border-[#cccccc33] p-2 shadow backdrop-blur-md"
+          >
+            {new Array(7).fill(0).map((_, index) => {
+              return (
+                <li className="rounded py-2 hover:bg-[#cccccc44]" key={index}>
+                  <Link href="/">Item {index}</Link>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </div>
-      <div className="h-18 flex w-20 items-center justify-center text-zinc-900 dark:text-zinc-50">
-        {locale === 'zh' ? (
-          <Link href={asPath} locale="en">
-            <iconify-icon
-              icon="ri:english-input"
-              style={{
-                fontSize: '40px'
-              }}
-            ></iconify-icon>
-          </Link>
-        ) : (
-          <Link href={asPath} locale="zh">
-            <iconify-icon
-              icon="uil:letter-chinese-a"
-              style={{
-                fontSize: '40px'
-              }}
-            ></iconify-icon>
-          </Link>
-        )}
+      <div className="navbar-center">
+        <Link
+          href="/"
+          locale={locale}
+          className="btn-ghost btn text-xl normal-case"
+        >
+          ZheQi-Blog
+        </Link>
+      </div>
+      <div className="navbar-end">
+        <div className="relative h-20 w-32">
+          <div className="absolute left-[-480px] top-[-47px] ml-96 h-32 w-44">
+            <Switch />
+          </div>
+        </div>
+        <button className="btn-ghost btn hidden md:block">
+          <div className="indicator">
+            <div className="h-18 flex w-20 items-center justify-center text-zinc-900 dark:text-zinc-50">
+              {locale === 'zh' ? (
+                <Link href={asPath} locale="en">
+                  <iconify-icon
+                    icon="ri:english-input"
+                    style={{
+                      fontSize: '40px'
+                    }}
+                  ></iconify-icon>
+                </Link>
+              ) : (
+                <Link href={asPath} locale="zh">
+                  <iconify-icon
+                    icon="uil:letter-chinese-a"
+                    style={{
+                      fontSize: '40px'
+                    }}
+                  ></iconify-icon>
+                </Link>
+              )}
+            </div>
+          </div>
+        </button>
       </div>
     </div>
   )

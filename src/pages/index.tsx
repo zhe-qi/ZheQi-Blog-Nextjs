@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 const Home: NextPage = () => {
   const { locale } = useRouter()
@@ -15,9 +16,15 @@ const Home: NextPage = () => {
   const text = hello.data?.greeting
   const data = getAll.data
 
+  const [isWebgpu, setIsWebgpu] = useState(true)
+
+  useEffect(() => {
+    !isWebgpu && setIsWebgpu(navigator.gpu !== undefined)
+  }, [isWebgpu])
+
   return (
     <>
-      <div className="mx-auto mt-20 flex h-[2000px] max-w-4xl flex-col border-x dark:text-red-200">
+      <div className="mx-auto mt-24 flex h-[1500px] max-w-screen-lg flex-col border-x font-sans dark:bg-zinc-900 dark:text-zinc-50">
         <div className="mt-20 text-center text-2xl">
           {locale === 'zh' ? '你好' : 'Hello'}
         </div>
@@ -47,8 +54,9 @@ const Home: NextPage = () => {
         </div>
         <div className="mx-auto mt-10">
           <Image
+            priority
             src="https://i.postimg.cc/vHyK48wV/nahida.jpg"
-            alt={'我的图片被你吃了吗'}
+            alt="我的图片被你吃了吗"
             width={150}
             height={150}
           />
@@ -81,7 +89,25 @@ const Home: NextPage = () => {
             </div>
           )}
         </div>
+        <div className="mt-10 py-10 text-center">
+          <Link className="text-2xl hover:underline" href="/blog">
+            跳转博客页 <iconify-icon icon="material-symbols:arrow-right-alt" />
+          </Link>
+        </div>
       </div>
+      {isWebgpu ? (
+        <div></div>
+      ) : (
+        <div className="card glass fixed bottom-[1vh] left-[3px] w-96 dark:text-zinc-50 md:bottom-[3vh] md:left-[2vw]">
+          <div className="card-body">
+            <h2 className="card-title">能不能升级下浏览器？</h2>
+            <p>连webgpu都不支持</p>
+            <div className="card-actions justify-end">
+              <button className="btn">Chrome 113+</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

@@ -8,7 +8,6 @@ const Switch = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   const changeTheme = () => {
-    console.log(inputRef.current?.checked)
     if (inputRef.current?.checked) {
       setTheme('dark')
     } else {
@@ -17,7 +16,7 @@ const Switch = () => {
   }
 
   return (
-    <div className="h-44 w-80 scale-[0.4]">
+    <div className="h-44 w-80 scale-[0.35]">
       <input
         type="checkbox"
         ref={inputRef}
@@ -26,7 +25,7 @@ const Switch = () => {
         defaultChecked={theme === 'dark'}
       />
       <label htmlFor={styles.sun_switch}>
-        <div className={`${styles.switch!} dark:bg-black`}>
+        <div className={`${styles.switch!} cursor-pointer dark:bg-black`}>
           <div
             className={`${styles.light3!} dark:translate-x-[30px] dark:bg-[#222]`}
           />
