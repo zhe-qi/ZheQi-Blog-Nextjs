@@ -1,6 +1,8 @@
+import '~/styles/globals.css'
+import '~/styles/szgotop.css'
+
 import { type AppType } from 'next/app'
 import { api } from '~/utils/api'
-import '~/styles/globals.css'
 import { ThemeProvider } from 'next-themes'
 import Layout from '~/components/Layout'
 

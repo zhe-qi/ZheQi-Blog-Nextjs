@@ -12,3 +12,21 @@ declare namespace JSX {
     >
   }
 }
+
+interface PaulPioOptions {
+  mode: string
+  hidden: boolean
+  content: {
+    welcome: string[]
+    custom: {
+      selector: string
+      text: string
+      type?: string
+    }[]
+  }
+}
+
+// 声明构造函数 Paul_Pio
+declare class Paul_Pio {
+  constructor(options: PaulPioOptions)
+}

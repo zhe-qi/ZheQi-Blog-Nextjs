@@ -24,8 +24,10 @@ const Switch = () => {
         id={styles.sun_switch}
         defaultChecked={theme === 'dark'}
       />
-      <label htmlFor={styles.sun_switch}>
-        <div className={`${styles.switch!} cursor-pointer dark:bg-black`}>
+      <label className="shadow-inner" htmlFor={styles.sun_switch}>
+        <div
+          className={`${styles.switch!} cursor-pointer  shadow-inner dark:bg-black`}
+        >
           <div
             className={`${styles.light3!} dark:translate-x-[30px] dark:bg-[#222]`}
           />

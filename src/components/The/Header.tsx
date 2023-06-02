@@ -6,7 +6,7 @@ const Header = () => {
   const { locale, asPath } = useRouter()
 
   return (
-    <div className="navbar fixed top-0 backdrop-blur dark:text-zinc-50">
+    <div className="navbar fixed top-0 z-50 backdrop-blur dark:text-zinc-50">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn-ghost btn">
@@ -25,18 +25,20 @@ const Header = () => {
               />
             </svg>
           </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu rounded-box menu-sm mt-3 w-52 border border-[#cccccc33] p-2 shadow backdrop-blur-md"
-          >
-            {new Array(7).fill(0).map((_, index) => {
-              return (
-                <li className="rounded py-2 hover:bg-[#cccccc44]" key={index}>
-                  <Link href="/">Item {index}</Link>
-                </li>
-              )
-            })}
-          </ul>
+          <div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu rounded-box menu-sm mt-3 w-52 border border-[#cccccc33] bg-[#ffffff99] p-2 shadow backdrop-blur backdrop-filter dark:bg-[#000000ee]"
+            >
+              {new Array(7).fill(0).map((_, index) => {
+                return (
+                  <li className="rounded py-2 hover:bg-[#cccccc22]" key={index}>
+                    <Link href="/">Item {index}</Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         </div>
       </div>
       <div className="navbar-center">

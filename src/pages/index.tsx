@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import party from 'party-js'
 
 const Home: NextPage = () => {
   const { locale } = useRouter()
@@ -22,9 +23,24 @@ const Home: NextPage = () => {
     !isWebgpu && setIsWebgpu(navigator.gpu !== undefined)
   }, [isWebgpu])
 
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      party.sparkles(e, {
+        count: party.variation.range(10, 30),
+        speed: party.variation.range(50, 150)
+      })
+    }
+
+    document.addEventListener('click', handleClick)
+
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  }, [])
+
   return (
     <>
-      <div className="mx-auto mt-24 flex h-[1500px] max-w-screen-lg flex-col border-x font-sans dark:bg-zinc-900 dark:text-zinc-50">
+      <div className="mx-auto mt-24 flex h-[1500px] max-w-screen-xl flex-col border-x font-sans dark:text-zinc-50">
         <div className="mt-20 text-center text-2xl">
           {locale === 'zh' ? '你好' : 'Hello'}
         </div>
