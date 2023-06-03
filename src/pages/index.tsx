@@ -5,7 +5,6 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import party from 'party-js'
 
 const Home: NextPage = () => {
   const { locale } = useRouter()
@@ -22,21 +21,6 @@ const Home: NextPage = () => {
   useEffect(() => {
     !isWebgpu && setIsWebgpu(navigator.gpu !== undefined)
   }, [isWebgpu])
-
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      party.sparkles(e, {
-        count: party.variation.range(10, 30),
-        speed: party.variation.range(50, 150)
-      })
-    }
-
-    document.addEventListener('click', handleClick)
-
-    return () => {
-      document.removeEventListener('click', handleClick)
-    }
-  }, [])
 
   return (
     <>

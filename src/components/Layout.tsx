@@ -1,6 +1,8 @@
 import Header from './The/Header'
 import Head from 'next/head'
+import { useEffect } from 'react'
 import GoTop from '~/components/GoTop/GoTop'
+import party from 'party-js'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -18,10 +20,27 @@ const Layout = ({ children }: LayoutProps) => {
     })
   }
 
-  if (typeof window !== 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    loadL2d()
-  }
+  useEffect(() => {
+    // 如果是移动端，就不要执行下面的代码了
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return
+    const handleClick = (e: MouseEvent) => {
+      party.sparkles(e, {
+        count: party.variation.range(10, 30),
+        speed: party.variation.range(50, 150)
+      })
+    }
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      loadL2d()
+    }
+  }, [])
 
   return (
     <>
