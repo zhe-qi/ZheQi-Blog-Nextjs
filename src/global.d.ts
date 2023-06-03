@@ -24,6 +24,7 @@ interface PaulPioOptions {
       type?: string
     }[]
   }
+  model: string[]
 }
 
 // 声明构造函数 Paul_Pio

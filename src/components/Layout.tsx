@@ -5,7 +5,24 @@ import GoTop from '~/components/GoTop/GoTop'
 type LayoutProps = {
   children: React.ReactNode
 }
+
 const Layout = ({ children }: LayoutProps) => {
+  const loadL2d = async () => {
+    const l2d = await import('oh-my-live2d')
+    const oml = l2d.loadOhMyLive2D({
+      sayHello: false,
+      transitionTime: 2000,
+      models: {
+        scale: 1
+      }
+    })
+  }
+
+  if (typeof window !== 'undefined') {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    loadL2d()
+  }
+
   return (
     <>
       <Head>
