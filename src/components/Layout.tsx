@@ -11,7 +11,7 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   const loadL2d = async () => {
     const l2d = await import('oh-my-live2d')
-    const oml = l2d.loadOhMyLive2D({
+    l2d.loadOhMyLive2D({
       sayHello: false,
       transitionTime: 2000,
       models: {
