@@ -11,3 +11,7 @@
 执行npx prisma studio查看数据库
 
 项目直接扔netlify就行了，识别的出来的
+
+项目效果预览：https://zheqi.netlify.app
+
+每天都会更新，nuxt3博客已经停止更新我发现nextjs挑战更大一点

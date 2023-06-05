@@ -1,6 +1,6 @@
 import Header from './The/Header'
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import GoTop from '~/components/GoTop/GoTop'
 import party from 'party-js'
 
@@ -9,6 +9,8 @@ type LayoutProps = {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const mainRef = useRef<HTMLElement>(null)
+
   const loadL2d = async () => {
     const l2d = await import('oh-my-live2d')
     l2d.loadOhMyLive2D({
@@ -25,13 +27,15 @@ const Layout = ({ children }: LayoutProps) => {
     if (typeof window !== 'undefined' && window.innerWidth < 768) return
     const handleClick = (e: MouseEvent) => {
       party.sparkles(e, {
-        count: party.variation.range(10, 30),
-        speed: party.variation.range(50, 150)
+        count: party.variation.range(10, 20),
+        speed: party.variation.range(40, 120)
       })
     }
-    document.addEventListener('click', handleClick)
+    const mainRefCurrent = mainRef.current
+    if (!mainRefCurrent) return
+    mainRefCurrent.addEventListener('click', handleClick)
     return () => {
-      document.removeEventListener('click', handleClick)
+      mainRefCurrent.removeEventListener('click', handleClick)
     }
   }, [])
 
@@ -51,7 +55,7 @@ const Layout = ({ children }: LayoutProps) => {
       </Head>
       <Header />
       <GoTop />
-      <main>{children}</main>
+      <main ref={mainRef}>{children}</main>
     </>
   )
 }

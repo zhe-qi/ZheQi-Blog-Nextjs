@@ -6,7 +6,7 @@ const Header = () => {
   const { locale, asPath } = useRouter()
 
   return (
-    <div className="navbar fixed top-0 z-50 backdrop-blur dark:text-zinc-50">
+    <div className="navbar fixed top-0 z-50 border-b border-zinc-100 backdrop-blur dark:text-zinc-50">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn-ghost btn">

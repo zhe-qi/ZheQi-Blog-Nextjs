@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import tail from 'public/images/tailwind.jpg'
 
 const Home: NextPage = () => {
   const { locale } = useRouter()
@@ -24,6 +25,11 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <Image
+        src={tail}
+        className="fixed left-0 top-0 -z-50 h-full w-full dark:hidden"
+        alt=""
+      />
       <div className="mx-auto mt-24 flex h-[1500px] max-w-screen-xl flex-col border-x font-sans dark:text-zinc-50">
         <div className="mt-20 text-center text-2xl">
           {locale === 'zh' ? '你好' : 'Hello'}

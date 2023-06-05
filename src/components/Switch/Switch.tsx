@@ -1,5 +1,5 @@
 import styles from './Switch.module.css'
-import { useRef } from 'react'
+import { useRef, type MouseEvent } from 'react'
 import { useTheme } from 'next-themes'
 
 const Switch = () => {
@@ -7,7 +7,8 @@ const Switch = () => {
 
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const changeTheme = () => {
+  const changeTheme = (e: MouseEvent<HTMLInputElement>) => {
+    e.stopPropagation()
     if (inputRef.current?.checked) {
       setTheme('dark')
     } else {
